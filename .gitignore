@@ -5,3 +5,4 @@
 *.pyc
 __pycache__
 .pytest_cache
+automation-playwright/poetry.lock
