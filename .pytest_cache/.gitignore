@@ -1,0 +1,8 @@
+# Created by pytest automatically.
+
+*.pytest_cache
+__pycache__
+*.pyc
+.vscode
+*.TAG
+settings.json

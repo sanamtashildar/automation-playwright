@@ -1,0 +1,7 @@
+.pytest_cache/v/cache/stepwise
+.pytest_cache/v/cache/lastfailed
+.pytest_cache/v/cache/nodeids
+.vscode/settings.json
+*.pyc
+__pycache__
+
