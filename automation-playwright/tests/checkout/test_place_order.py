@@ -1,6 +1,6 @@
 from playwright.sync_api import expect
 
-from src.automation_playwright.pagesLoginPage import LoginPage
+from src.automation_playwright.pages.LoginPage import LoginPage
 
 
 def test_place_order(set_up_tear_down) -> None:

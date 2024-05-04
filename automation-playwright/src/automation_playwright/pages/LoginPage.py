@@ -1,4 +1,4 @@
-from automationneemo.src.pages.ProductListPage import ProductListPage
+from src.automation_playwright.pages.ProductListPage import ProductListPage
 
 
 class LoginPage:

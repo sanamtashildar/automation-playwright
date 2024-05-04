@@ -1,4 +1,4 @@
-from automationneemo.src.pages.CartPage import CartPage
+from src.automation_playwright.pages.CartPage import CartPage
 
 
 class ProductListPage:
