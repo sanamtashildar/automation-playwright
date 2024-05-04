@@ -8,9 +8,10 @@ class ProductListPage:
         self._products_header = page.locator("span.title")
         self._burger_menu = page.locator("button#react-burger-menu-btn")
         self._logout_btn = page.locator("#logout_sidebar_link")
-        self._add_to_cart = page.locator("//div[text()='Sauce Labs Bike Light']/ancestor::div[@class='inventory_item_label']/following-sibling::div//button")
+        self._add_to_cart = page.locator(
+            "//div[text()='Sauce Labs Bike Light']/ancestor::div[@class='inventory_item_label']/following-sibling::div//button"
+        )
         self._cart_icon = page.locator("a.shopping_cart_link")
-
 
     @property
     def product_header(self):
@@ -32,7 +33,9 @@ class ProductListPage:
 
     def get_add_remove_cart_locator(self, product):
         """This will return locator of Add to cart button or Remove button"""
-        return self.page.locator(f"//div[text()='{product}']/ancestor::div[@class='inventory_item_label']/following-sibling::div//button")
+        return self.page.locator(
+            f"//div[text()='{product}']/ancestor::div[@class='inventory_item_label']/following-sibling::div//button"
+        )
 
     def click_add_to_cart_or_remove(self, product):
         self.get_add_remove_cart_locator(product).click()

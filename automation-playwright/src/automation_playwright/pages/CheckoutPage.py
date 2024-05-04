@@ -1,7 +1,4 @@
-
-
 class CheckoutPage:
-
 
     def __init__(self, page):
         self.page = page
@@ -25,9 +22,7 @@ class CheckoutPage:
         return self
 
     def enter_checkout_details(self, f_name, l_name, zip_code):
-        self.enter_first_name(f_name)\
-            .enter_last_name(l_name)\
-            .enter_zip(zip_code)
+        self.enter_first_name(f_name).enter_last_name(l_name).enter_zip(zip_code)
         return self
 
     def click_continue(self):

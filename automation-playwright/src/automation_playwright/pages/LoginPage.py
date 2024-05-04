@@ -22,8 +22,8 @@ class LoginPage:
         self._login_btn.click()
 
     def do_login(self, credentials):
-        self.enter_username(credentials['username'])
-        self.enter_password(credentials['password'])
+        self.enter_username(credentials["username"])
+        self.enter_password(credentials["password"])
         self.click_login()
         return ProductListPage(self.page)
 
