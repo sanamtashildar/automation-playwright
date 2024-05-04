@@ -1,5 +1,5 @@
 from playwright.sync_api import Page, expect
-from automationneemo.src.pages.LoginPage import LoginPage
+from src.automation_playwright.pages.LoginPage import LoginPage
 
 
 def test_logout(set_up_tear_down) -> None:
