@@ -22,4 +22,4 @@ def test_place_order(set_up_tear_down) -> None:
         .click_finish_button()
     )
 
-    expect(checkout_p.get_confirm_message()).to_have_text("THANK YOU FOR YOUR ORDER")
+    expect(checkout_p.get_confirm_message()).to_have_text("Thank you for your order!")
