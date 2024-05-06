@@ -30,6 +30,7 @@ jobs:
         pip install flake8 pytest
         pip install pytest-playwright
         pip install poetry
+        cd automation-playwright
         poetry install
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         playwright install
