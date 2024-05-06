@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "automation_playwright", from = "src"}]
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.10"
 pytest = "^8.2"
 pytest-playwright = "^0.4"
 autoflake = "^2.3"
