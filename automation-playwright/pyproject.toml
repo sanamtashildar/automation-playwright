@@ -13,6 +13,7 @@ pytest-playwright = "^0.4"
 autoflake = "^2.3"
 black = "^24.4"
 pendulum = "^3.0.0"
+isort = "^5.13.2"
 
 
 [build-system]
