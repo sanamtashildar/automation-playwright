@@ -33,9 +33,9 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lint with flake8
       run: |
-        isort --profile black
+        isort --profile black .
         black .
-        autoflake --remove-all-unused-imports --rescursive --remove-unused-variables --in-place
+        autoflake --remove-all-unused-imports  --remove-unused-variables --in-place .
     - name: Test with pytest
       run: |
         pytest
