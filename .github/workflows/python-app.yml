@@ -31,6 +31,7 @@ jobs:
         cd automation-playwright
         poetry install
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Test with pytest
-      run: |
-        pytest
+    - name: Ensure browsers are installed
+      run: python -m playwright install --with-deps
+    - name: Run your tests
+      run: pytest --tracing=retain-on-failure
