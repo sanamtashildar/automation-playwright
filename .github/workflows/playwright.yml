@@ -15,7 +15,7 @@ jobs:
       uses: actions/setup-python@v4
     - name: Install dependencies
       run: |
-       cat /ect/os-release
+       cat /etc/os-release
        sudo apt-get update
        sudo apt-get -y dist-upgrade
        sudo apt-get install --no-install-recommends --no-install-suggests -y curl libpq-dev  build-essential python3.12 python3.12-dev python3.12-venv
@@ -23,4 +23,3 @@ jobs:
        python -V
        python3 -m venv .venv
        source .venv/bin/activate
-       
