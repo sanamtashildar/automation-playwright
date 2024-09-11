@@ -15,16 +15,8 @@ jobs:
       uses: actions/setup-python@v4
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install poetry
-        cd automation-playwright
-        poetry install
-        python -m playwright install --with-deps
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Run your tests
-      run: pytest --tracing=retain-on-failure
-    - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
-      with:
-        name: playwright-traces
-        path: test-results/
+       sudo apt-get update
+       sudo apt-get -y dist-upgrade
+       sudo apt-get install --no-install-recommends --no-install-suggests -y curl libpq-dev  build-essential python3.12 python3.12-dev python3.12-venv
+       sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.12 1
+       python -V
