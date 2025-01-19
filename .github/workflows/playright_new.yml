@@ -23,7 +23,9 @@ jobs:
     - name: Ensure browsers are installed
       run: python -m playwright install --with-deps
     - name: Run your tests
-      run: pytest tests/ 
+      run: | 
+        cd tests
+        pytest -vs --html=playwright-report.html --self-contained-html 
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
