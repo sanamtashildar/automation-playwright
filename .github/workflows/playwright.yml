@@ -29,16 +29,22 @@ jobs:
        pip install --upgrade pip
        pip install playwright
        playwright install-deps 
-       pytest tests/ --maxfail=5 --disable-warnings --html=playwright-report.html --self-contained-html
+       
+    - name: Debug Python Environment
+      run: |
+        source .venv/bin/activate
+        python -V
+        which python
+        which pytest
 
     # - name: Run Playwright Tests
     #   run: |
     #     source .venv/bin/activate
     #     pytest tests/ --maxfail=5 --disable-warnings --html=playwright-report.html --self-contained-html
 
-    - name: Upload Test Report
-      if: always()  # Always run this step, even if tests fail
-      uses: actions/upload-artifact@v3
-      with:
-        name: playwright-test-report
-        path: playwright-report.html
+    # - name: Upload Test Report
+    #   if: always()  # Always run this step, even if tests fail
+    #   uses: actions/upload-artifact@v3
+    #   with:
+    #     name: playwright-test-report
+    #     path: playwright-report.html
