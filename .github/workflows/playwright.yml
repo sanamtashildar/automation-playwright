@@ -15,6 +15,7 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: '3.12'
+
     - name: Install dependencies
       run: |
        cat /etc/os-release
@@ -29,3 +30,15 @@ jobs:
        pip install playwright
        playwright install
        playwright install-deps 
+
+    - name: Run Playwright Tests
+      run: |
+        source .venv/bin/activate
+        pytest tests/ --maxfail=5 --disable-warnings --html=playwright-report.html --self-contained-html
+
+    - name: Upload Test Report
+      if: always()  # Always run this step, even if tests fail
+      uses: actions/upload-artifact@v3
+      with:
+        name: playwright-test-report
+        path: playwright-report.html
