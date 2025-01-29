@@ -27,7 +27,7 @@ jobs:
         run: set +x
 
       - name: Set Up Python Virtual Environment
-        run: python3.10 -m venv venv
+        run: python -m venv venv
 
       - name: Activate Virtual Environment
         run: echo "source venv/bin/activate" >> $GITHUB_ENV
