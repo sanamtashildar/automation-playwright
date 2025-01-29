@@ -1,6 +1,13 @@
-name: Python Tasks
+name: Python Workflow
 
-on: workflow_dispatch
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   run-python-tasks:
@@ -45,3 +52,11 @@ jobs:
         run: |
           source venv/bin/activate
           python generate_result.py
+
+      - name: Save Results to Repository
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add .
+          git commit -m "Automated results update"
+          git push
