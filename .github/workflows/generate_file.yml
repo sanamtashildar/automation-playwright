@@ -36,10 +36,14 @@ jobs:
           sudo apt-get install -y zip
           python automation-playwright/generate_result.py
           
-      - name: Save Results to Repository
+      - name: Configure Git and Push Changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git add .
-          git commit -m "Automated results update"
-          git push
+          git add generate_result.py
+          git commit -m "Automated results update" || echo "No changes to commit"
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+
+          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
