@@ -42,8 +42,6 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git add generate_result.py
+          git add multiplication_tables.txt || echo "No files to add"
           git commit -m "Automated results update" || echo "No changes to commit"
           git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
-
-          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
