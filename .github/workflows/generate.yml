@@ -49,7 +49,7 @@ jobs:
       - name: Run Python Script
         run: |
           source .venv/bin/activate
-          python generate_result.py
+          python automation-playwright/generate_result.py
 
       - name: Deploy Results to GitHub Pages
         uses: actions/upload-artifact@v4
