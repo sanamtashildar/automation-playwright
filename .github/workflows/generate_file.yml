@@ -1,55 +1,55 @@
-name: Python Workflow
+# name: Python Workflow
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-  workflow_dispatch:
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     branches:
+#       - main
+#   workflow_dispatch:
 
-jobs:
-  run-python-tasks:
-    runs-on: ubuntu-latest
+# jobs:
+#   run-python-tasks:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v4
 
-      - name: Show Working Directory
-        run: pwd
+#       - name: Show Working Directory
+#         run: pwd
 
-      - name: List Files
-        run: ls -la
+#       - name: List Files
+#         run: ls -la
 
-      - name: Disable Debug Mode
-        run: set +x
+#       - name: Disable Debug Mode
+#         run: set +x
 
-      - name: Set Up Python Virtual Environment
-        run: |
-          python -m venv venv
-          source venv/bin/activate
-          pip install --upgrade pip
-          pip install requests testrail google-api-python-client
-          sudo apt-get update
-          sudo apt-get install -y zip
-          python automation-playwright/generate_result.py
+#       - name: Set Up Python Virtual Environment
+#         run: |
+#           python -m venv venv
+#           source venv/bin/activate
+#           pip install --upgrade pip
+#           pip install requests testrail google-api-python-client
+#           sudo apt-get update
+#           sudo apt-get install -y zip
+#           python automation-playwright/generate_result.py
           
-      # - name: Configure Git and Push Changes
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   run: |
-      #     git config --global user.name "github-actions"
-      #     git config --global user.email "github-actions@github.com"
-      #     git add multiplication_tables.txt || echo "No files to add"
-      #     git commit -m "Automated results update" || echo "No changes to commit"
-      #     git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+#       # - name: Configure Git and Push Changes
+#       #   env:
+#       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#       #   run: |
+#       #     git config --global user.name "github-actions"
+#       #     git config --global user.email "github-actions@github.com"
+#       #     git add multiplication_tables.txt || echo "No files to add"
+#       #     git commit -m "Automated results update" || echo "No changes to commit"
+#       #     git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
 
-      - name: Deploy Results to GitHub Pages
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: ./results
+#       - name: Deploy Results to GitHub Pages
+#         uses: actions/upload-pages-artifact@v1
+#         with:
+#           path: ./results
 
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2    
+#       - name: Deploy to GitHub Pages
+#         uses: actions/deploy-pages@v2    
