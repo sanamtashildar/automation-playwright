@@ -36,15 +36,15 @@ jobs:
           sudo apt-get install -y zip
           python automation-playwright/generate_result.py
           
-      - name: Configure Git and Push Changes
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-          git add multiplication_tables.txt || echo "No files to add"
-          git commit -m "Automated results update" || echo "No changes to commit"
-          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+      # - name: Configure Git and Push Changes
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   run: |
+      #     git config --global user.name "github-actions"
+      #     git config --global user.email "github-actions@github.com"
+      #     git add multiplication_tables.txt || echo "No files to add"
+      #     git commit -m "Automated results update" || echo "No changes to commit"
+      #     git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
 
       - name: Deploy Results to GitHub Pages
         uses: actions/upload-pages-artifact@v1
