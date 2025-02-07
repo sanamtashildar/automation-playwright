@@ -45,3 +45,11 @@ jobs:
           git add multiplication_tables.txt || echo "No files to add"
           git commit -m "Automated results update" || echo "No changes to commit"
           git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+
+      - name: Deploy Results to GitHub Pages
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./results
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v2    
