@@ -29,9 +29,6 @@ jobs:
         with:
           python-version: '3.13'
 
-      - name: Activate Virtual Environment
-        run: echo "source venv/bin/activate" >> $GITHUB_ENV
-
       - name: Upgrade pip
         run: |
           source venv/bin/activate
