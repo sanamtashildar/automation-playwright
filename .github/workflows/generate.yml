@@ -56,11 +56,10 @@ jobs:
           source .venv/bin/activate
           python automation-playwright/generate_result.py
 
-
       - name: Deploy Results to GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: result/multiplication_tables.txt
+          path: result/
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
