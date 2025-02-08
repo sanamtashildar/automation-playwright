@@ -54,11 +54,12 @@ jobs:
         run: |
           source .venv/bin/activate
           python automation-playwright/generate_result.py
+          
 
       - name: Deploy Results to GitHub Pages
         uses: actions/upload-artifact@v4
         with:
-          path: automation-playwright/result/multiplication_tables.txt
+          path: result/multiplication_tables.txt
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
