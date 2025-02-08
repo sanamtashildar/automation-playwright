@@ -1,4 +1,9 @@
-def generate_multiplication_tables(filename="multiplication_tables.txt"):
+import os
+
+def generate_multiplication_tables(filename="result/multiplication_tables.txt"):
+    # Create the result directory if it doesn't exist
+    os.makedirs(os.path.dirname(filename), exist_ok=True)
+    
     with open(filename, "w") as file:
         for i in range(2, 21):  # Tables from 2 to 20
             file.write(f"Multiplication Table for {i}\n")
@@ -9,4 +14,4 @@ def generate_multiplication_tables(filename="multiplication_tables.txt"):
     print(f"Multiplication tables saved in {filename}")
 
 # Run the function
-generate_multiplication_tables()
+generate_multiplication_tables()06
