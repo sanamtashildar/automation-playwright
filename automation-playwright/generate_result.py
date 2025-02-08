@@ -14,4 +14,4 @@ def generate_multiplication_tables(filename="result/multiplication_tables.txt"):
     print(f"Multiplication tables saved in {filename}")
 
 # Run the function
-generate_multiplication_tables()06
+generate_multiplication_tables()
