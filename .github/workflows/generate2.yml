@@ -1,0 +1,83 @@
+name: Python Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: read
+  pages: write
+
+jobs:
+  run-python-tasks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Show Working Directory
+        run: pwd
+
+      - name: List Files
+        run: ls -la
+
+      - name: Disable Debug Mode
+        run: set +x
+
+      - name: Set Up Python Virtual Environment
+        run: python3.10 -m venv venv
+
+      - name: Activate Virtual Environment
+        run: echo "source venv/bin/activate" >> $GITHUB_ENV
+
+      - name: Upgrade pip
+        run: |
+          source venv/bin/activate
+          pip install --upgrade pip
+
+      - name: Install Dependencies
+        run: |
+          source venv/bin/activate
+          pip install requests testrail google-api-python-client
+
+      - name: Update System Packages
+        run: sudo apt-get update
+
+      - name: Install Zip
+        run: sudo apt-get install -y zip
+
+      - name: Run Python Script
+        run: |
+          source venv/bin/activate
+          python generate_result.py
+
+      - name: Ensure Results Directory Exists
+        run: mkdir -p results
+
+      - name: Move Generated File to Results Directory
+        run: mv multiplication.txt results/
+
+      - name: Upload Artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: result/multiplication_tables.txt
+
+  deploy:
+    needs: run-python-tasks
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v3
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v2
