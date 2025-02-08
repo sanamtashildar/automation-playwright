@@ -30,20 +30,19 @@ jobs:
       - name: Disable Debug Mode
         run: set +x
 
-      - name: Set Up Python Virtual Environment
-        run: python3.10 -m venv venv
-
-      - name: Activate Virtual Environment
-        run: echo "source venv/bin/activate" >> $GITHUB_ENV
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
 
       - name: Upgrade pip
         run: |
-          source venv/bin/activate
+          python -m venv .venv
+          source .venv/bin/activate
           pip install --upgrade pip
 
       - name: Install Dependencies
         run: |
-          source venv/bin/activate
+          source .venv/bin/activate
           pip install requests testrail google-api-python-client
 
       - name: Update System Packages
@@ -54,14 +53,8 @@ jobs:
 
       - name: Run Python Script
         run: |
-          source venv/bin/activate
-          python generate_result.py
-
-      - name: Ensure Results Directory Exists
-        run: mkdir -p results
-
-      - name: Move Generated File to Results Directory
-        run: mv multiplication.txt results/
+          source .venv/bin/activate
+          python automation-playwright/generate_result.py
 
       - name: Upload Artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v2
