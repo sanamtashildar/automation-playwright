@@ -58,7 +58,7 @@ jobs:
 
 
       - name: Deploy Results to GitHub Pages
-        uses: upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v3
         with:
           path: result/multiplication_tables.txt
 
