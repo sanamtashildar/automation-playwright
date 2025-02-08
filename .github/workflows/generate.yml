@@ -55,16 +55,10 @@ jobs:
         run: |
           source .venv/bin/activate
           python automation-playwright/generate_result.py
-          
-      - name: Setup GitHub Pages
-        uses: actions/configure-pages@v3
-        with:
-          target_branch: gh-pages
-          folder: result
-          publish_dir: result
+
 
       - name: Deploy Results to GitHub Pages
-        uses: upload-pages-artifact@v2
+        uses: upload-pages-artifact@v3
         with:
           path: result/multiplication_tables.txt
 
