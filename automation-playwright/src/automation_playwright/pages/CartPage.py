@@ -2,6 +2,9 @@ from src.automation_playwright.pages.CheckoutPage import CheckoutPage
 
 
 class CartPage:
+    """
+    Doc string
+    """
 
     def __init__(self, page):
         self.page = page
