@@ -84,11 +84,8 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
+          publish_dir: result/  # The directory to deploy
           publish_branch: gh-pages  # The branch GitHub Pages uses
           keep_files: true  # Keep existing files in the gh-pages branch
           allow_empty_commit: false
           force_orphan: true  # Ensure only the generated file is deployed
-          exclude_assets: |
-            *  # Exclude all files by default
-            !multiplication_tables.txt  # Include only the generated file
