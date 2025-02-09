@@ -56,6 +56,9 @@ jobs:
           source .venv/bin/activate
           python automation-playwright/generate_result.py
 
+      - name: Verify File Exists
+        run: ls -la result    
+
       - name: Deploy Results to GitHub Pages
         uses: actions/upload-pages-artifact@v3
         id: file-upload
