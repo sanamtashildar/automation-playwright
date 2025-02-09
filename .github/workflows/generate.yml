@@ -69,7 +69,6 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.file-upload.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: run-python-tasks
     permissions:
