@@ -3,7 +3,7 @@ from src.automation_playwright.pages.CheckoutPage import CheckoutPage
 
 class CartPage:
     """
-    Doc string
+    Doc strin
     """
 
     def __init__(self, page):
