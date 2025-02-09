@@ -60,6 +60,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         id: file-upload
         with:
+          name: github-pages
           path: result/
 
   deploy:
