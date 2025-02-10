@@ -57,13 +57,14 @@ jobs:
           python automation-playwright/generate_result.py
 
       - name: Verify File Exists
-        run: ls -la result    
+        run: | 
+          ls -la result   
+          touch result/.nojekyll 
 
       - name: Deploy Results to GitHub Pages
-        uses: actions/upload-artifact@v4 
+        uses: actions/upload-pages-artifact@v3
         id: file-upload
         with:
-          name: result
           path: result/
 
   deploy:
@@ -77,21 +78,25 @@ jobs:
       contents: write
   
     steps:
-      - name: Download Results Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: result
-          path: result/
-
-      - name: Debug files
-        run: |
-          ls -la result
-
+  
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: result/  # The directory to deploy
-          publish_branch: gh-pages  # The branch GitHub Pages uses
-          keep_files: true  # Keep existing files in the gh-pages branch
-          force_orphan: true  # Ensure only the generated file is deployed.
+        uses: actions/deploy-pages@v4
+
+      # - name: Download Results Artifact
+      #   uses: actions/download-artifact@v4
+      #   with:
+      #     name: result
+      #     path: result/
+
+      # - name: Debug files
+      #   run: |
+      #     ls -la result
+
+      # - name: Deploy to GitHub Pages
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: result/  # The directory to deploy
+      #     publish_branch: gh-pages  # The branch GitHub Pages uses
+      #     keep_files: true  # Keep existing files in the gh-pages branch
+      #     force_orphan: true  # Ensure only the generated file is deployed.
