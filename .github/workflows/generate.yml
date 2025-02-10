@@ -94,4 +94,4 @@ jobs:
           publish_dir: result/  # The directory to deploy
           publish_branch: gh-pages  # The branch GitHub Pages uses
           keep_files: true  # Keep existing files in the gh-pages branch
-          force_orphan: true  # Ensure only the generated file is deployed
+          force_orphan: true  # Ensure only the generated file is deployed.
