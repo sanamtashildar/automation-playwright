@@ -60,7 +60,7 @@ jobs:
         run: ls -la result    
 
       - name: Deploy Results to GitHub Pages
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v4 
         id: file-upload
         with:
           name: result
@@ -77,8 +77,8 @@ jobs:
       contents: write
   
     steps:
-      - name: Setup GitHub Pages
-        uses: actions/configure-pages@v3
+      - name: Download Results Artifact
+        uses: actions/download-artifact@v3
         with:
           name: result
           path: result/
